@@ -21,6 +21,11 @@
     apisix:
       image: apache/apisix:${APISIX_IMAGE_TAG:-3.18.0-debian}
       restart: always
+      environment:
+        - ADMIN_NAME=${ADMIN_NAME}
+        - ADMIN_KEY=${ADMIN_KEY}
+        - VIEWER_NAME=${VIEWER_NAME}
+        - VIEWER_KEY=${VIEWER_KEY}
       volumes:
         - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
       depends_on:
