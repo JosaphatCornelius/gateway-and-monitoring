@@ -83,6 +83,16 @@
       networks:
         apisix_mgmt:
 
+    node-exporter:
+      image: prom/node-exporter:v1.12.1
+      container_name: system-node-exporter
+      restart: unless-stopped
+      command:
+        - '--path.rootfs=/host'
+        - '--collector.filesystem.ignored-mount-points="^/(dev|proc|sys|var/lib/docker/.+)($$|/)"'
+      networks:
+        apisix_mgmt:
+
   networks:
     apisix_mgmt:
       external: true
