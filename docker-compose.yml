@@ -44,7 +44,7 @@
         apisix_backend:
 
     etcd:
-      image: bitnamilegacy/etcd:3.5.11
+      image: bitnamilegacy/etcd:3.6.4
       container_name: system-gateway-etcd
       restart: always
       volumes:
@@ -60,7 +60,7 @@
         apisix_mgmt:
 
     prometheus:
-      image: prom/prometheus:v2.25.0
+      image: prom/prometheus:v3.14.0
       container_name: system-monitoring-prometheus
       restart: always
       volumes:
@@ -71,7 +71,7 @@
         apisix_mgmt:
 
     grafana:
-      image: grafana/grafana:7.3.7
+      image: grafana/grafana:13.2.3
       container_name: system-monitoring-grafana
       restart: always
       # ports:
