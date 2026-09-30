@@ -20,6 +20,7 @@
   services:
     apisix:
       image: apache/apisix:${APISIX_IMAGE_TAG:-3.18.0-debian}
+      container_name: system-gateway-apisix
       restart: always
       environment:
         - ADMIN_NAME=${ADMIN_NAME}
@@ -44,6 +45,7 @@
 
     etcd:
       image: bitnamilegacy/etcd:3.5.11
+      container_name: system-gateway-etcd
       restart: always
       volumes:
         - etcd_data:/bitnami/etcd
@@ -59,6 +61,7 @@
 
     prometheus:
       image: prom/prometheus:v2.25.0
+      container_name: system-monitoring-prometheus
       restart: always
       volumes:
         - ./prometheus_conf/prometheus.yml:/etc/prometheus/prometheus.yml
@@ -69,6 +72,7 @@
 
     grafana:
       image: grafana/grafana:7.3.7
+      container_name: system-monitoring-grafana
       restart: always
       # ports:
       #   - "3000:3000"
